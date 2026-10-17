@@ -14,7 +14,7 @@ waiting = set()
 @dp.message(CommandStart(), F.chat.type == "private")
 async def start(message: Message):
     waiting.add(message.from_user.id)
-    await message.answer("ну давай, оправдай свои 42 хромосомы")
+    await message.answer("напиши сообщение")
 
 
 @dp.message(F.chat.type == "private")
@@ -26,7 +26,7 @@ async def forward(message: Message):
             message_id=message.message_id
         )
         waiting.discard(message.from_user.id)
-        await message.answer("ладна")
+        await message.answer("отправлено анонимно")
 
 
 async def main():
